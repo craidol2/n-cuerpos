@@ -26,8 +26,7 @@ void readData(float *datos) {
   {
     while ( getline (myfile,line) )
     {
-        datos[cont]=line;
-      //cout << line << '\n';
+        datos[cont]=std::stof(line);
         cont=cont+1;
     }
     myfile.close();
@@ -36,7 +35,7 @@ void readData(float *datos) {
 
 int main() {
     int n=100;
-    float *datos[n];
+    float datos[n];
     generateRandomData(n);
     readData(datos);
     cout<<"primer dato "<<datos[0];

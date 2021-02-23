@@ -5,9 +5,8 @@
 
 
 
-#CREACION DE LOS ARCHIVOS QUE CONTIENEN LOS DATOS DE ENTRADA
-g++ data.cpp -o datosEntrada  && ./datosEntrada
-
+#CREACION DE LOS ARCHIVOS QUE CONTIENEN LOS DATOS DE ENTRADA 
+g++ data.cpp -std=c++11 -o datosEntrada  && ./datosEntrada
 
 
 
@@ -15,5 +14,4 @@ g++ data.cpp -o datosEntrada  && ./datosEntrada
 module load devtools/cuda/8.0
 
 #compilar
-
-nvcc -std=c++11 -o n-cuerpos n-cuerpos.c
+nvcc -std=c++11 -o nbody nbody.cu
