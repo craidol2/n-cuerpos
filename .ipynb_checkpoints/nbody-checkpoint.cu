@@ -1,7 +1,23 @@
+/*
+  Purpose:
+    Predicts the individual motions of a group of objects interacting with each other gravitationally, moving through 3 dimensional space
+  Licensing:
+    This code is distributed under the GNU LGPL license.
+  Modified:
+    Unknow
+  Author:
+    Unknow
+  Cuda Modification:
+  24 Fenruary 2021 by Diego Villamizar, Universidad Industrial de Santander diego.villamizar7@correouis.edu.co                   
+  This Cuda Modification makes a parallelization of the original Code...  
+*/
+
+
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "timer.h"
+#include "./lib/timer.h"
 
 
 #include <iostream>
@@ -21,7 +37,7 @@ typedef struct { float4 *pos, *vel; } BodySystem;
 void readData(float *datos) {
   int cont=0;
   string line;
-  ifstream myfile (".data/datos_entrada_100000_cuerpos.txt");
+  ifstream myfile (".archivoEntrada/datos_entrada_100000_cuerpos.txt");
   if (myfile.is_open())
   {
     while ( getline (myfile,line) )
