@@ -33,13 +33,6 @@ void readData(float *datos) {
   }
 }
 
-
-void randomizeBodies(float *data, int n) {
-  for (int i = 0; i < n; i++) {
-    data[i] = 2.0f * (rand() / (float)RAND_MAX) - 1.0f;
-  }
-}
-
 __global__
 void bodyForce(float4 *p, float4 *v, float dt, int n) {
   int i = blockDim.x * blockIdx.x + threadIdx.x;
@@ -71,11 +64,10 @@ void bodyForce(float4 *p, float4 *v, float dt, int n) {
 
 int main(const int argc, const char** argv) {
   
-  int nBodies = 30000;
-  int nIters = 10;  // simulation iterations
+  int nBodies = 100; //DEBE SER IGUAL A LA CANTIDAD DE CUERPOS EN EL ARCHIVO .txt
+  int nIters = 10;
 
   const float dt = 0.01f; // time step
-  
   
   int bytes = 2*nBodies*sizeof(float4);
   float *buf = (float*)malloc(bytes);
