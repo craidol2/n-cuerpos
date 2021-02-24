@@ -80,7 +80,7 @@ void bodyForce(float4 *p, float4 *v, float dt, int n) {
 
 int main(const int argc, const char** argv) {
   
-  int nBodies = 100; //DEBE SER IGUAL A LA CANTIDAD DE CUERPOS EN EL ARCHIVO .txt
+  int nBodies = 1000000; //DEBE SER IGUAL A LA CANTIDAD DE CUERPOS EN EL ARCHIVO .txt
   int nIters = 10;
 
   const float dt = 0.01f; // time step
@@ -89,7 +89,6 @@ int main(const int argc, const char** argv) {
   float *buf = (float*)malloc(bytes);
   BodySystem p = { (float4*)buf, ((float4*)buf) + nBodies };
 
-  //randomizeBodies(buf, 8*nBodies); // Init pos / vel data
   readData(buf); //LEO LOS DATOS DEL ARCHIVO DE TEXTO
 
   float *d_buf;

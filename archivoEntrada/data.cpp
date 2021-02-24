@@ -34,7 +34,7 @@ void readData(float *datos) {
 }
 
 int main() {
-    int n=100;
+    int n=1000000;
     float datos[n];
     generateRandomData(n);
     readData(datos);
