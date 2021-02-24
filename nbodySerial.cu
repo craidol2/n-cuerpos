@@ -51,10 +51,10 @@ void readData(float *datos) {
 
 
 void bodyForce(float4 *p, float4 *v, float dt, int n) {
-	for (int i =0; i < n) {
+  for (int i =0; i < n) {
     float Fx = 0.0f; float Fy = 0.0f; float Fz = 0.0f;
 
-      for (int j = 0; j < BLOCK_SIZE; j++) {
+    for (int j = 0; j < BLOCK_SIZE; j++) {
         float dx = spos[j].x - p[i].x;
         float dy = spos[j].y - p[i].y;
         float dz = spos[j].z - p[i].z;
@@ -109,6 +109,5 @@ int main(const int argc, const char** argv) {
 
   printf("%d Bodies: average %0.3f Billion Interactions / second\n", nBodies, 1e-9 * nBodies * nBodies / avgTime);
   free(buf);
-  //free(d_buf);
   return 0;
 }
