@@ -1,11 +1,11 @@
-Iteration 1: 34.321 seconds
-Iteration 2: 34.312 seconds
-Iteration 3: 34.311 seconds
-Iteration 4: 34.315 seconds
-Iteration 5: 34.310 seconds
-Iteration 6: 34.301 seconds
-Iteration 7: 34.306 seconds
-Iteration 8: 34.304 seconds
-Iteration 9: 34.298 seconds
-Iteration 10: 34.354 seconds
-1000000 Bodies: average 29.144 Billion Interactions / second
+Iteration 1: 0.005 seconds
+Iteration 2: 0.005 seconds
+Iteration 3: 0.005 seconds
+Iteration 4: 0.005 seconds
+Iteration 5: 0.005 seconds
+Iteration 6: 0.005 seconds
+Iteration 7: 0.005 seconds
+Iteration 8: 0.005 seconds
+Iteration 9: 0.005 seconds
+Iteration 10: 0.005 seconds
+10000 Bodies: average 20.414 Billion Interactions / second

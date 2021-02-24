@@ -37,7 +37,7 @@ typedef struct { float4 *pos, *vel; } BodySystem;
 void readData(float *datos) {
   int cont=0;
   string line;
-  ifstream myfile (".archivoEntrada/datos_entrada_100000_cuerpos.txt");
+  ifstream myfile ("./archivoEntrada/datos_entrada_100000_cuerpos.txt");
   if (myfile.is_open())
   {
     while ( getline (myfile,line) )
@@ -80,7 +80,7 @@ void bodyForce(float4 *p, float4 *v, float dt, int n) {
 
 int main(const int argc, const char** argv) {
   
-  int nBodies = 1000000; //DEBE SER IGUAL A LA CANTIDAD DE CUERPOS EN EL ARCHIVO .txt
+  int nBodies = 10000; //DEBE SER IGUAL A LA CANTIDAD DE CUERPOS EN EL ARCHIVO .txt
   int nIters = 10;
 
   const float dt = 0.01f; // time step
@@ -98,6 +98,9 @@ int main(const int argc, const char** argv) {
   int nBlocks = (nBodies + BLOCK_SIZE - 1) / BLOCK_SIZE;
   double totalTime = 0.0; 
 
+
+  ofstream myfile ("position_nbodies.txt");
+
   for (int iter = 1; iter <= nIters; iter++) {
     StartTimer();
 
@@ -105,10 +108,19 @@ int main(const int argc, const char** argv) {
     bodyForce<<<nBlocks, BLOCK_SIZE>>>(d_p.pos, d_p.vel, dt, nBodies);
     cudaMemcpy(buf, d_buf, bytes, cudaMemcpyDeviceToHost);
 
+
+    
+    
     for (int i = 0 ; i < nBodies; i++) { // integrate position
       p.pos[i].x += p.vel[i].x*dt;
       p.pos[i].y += p.vel[i].y*dt;
       p.pos[i].z += p.vel[i].z*dt;
+          //cout<<p.pos[i].x<<"\t"<<p.pos[i].y<<"\t"<<p.pos[i].z<<"\n";
+
+      if (myfile.is_open() && iter==1)
+      {
+        myfile<<p.pos[i].x<<"\t"<<p.pos[i].y<<"\t"<<p.pos[i].z<<"\n";
+      }
     }
 
     const double tElapsed = GetTimer() / 1000.0;
@@ -119,6 +131,8 @@ int main(const int argc, const char** argv) {
     printf("Iteration %d: %.3f seconds\n", iter, tElapsed);
 
   }
+  myfile.close();
+  
   double avgTime = totalTime / (double)(nIters-1); 
 
 

@@ -30,6 +30,14 @@ Esto para un número mínimo de 100000 cuerpos y preferiblemente llegar a más d
 3. sbatch nbodyCU.sbatch  //ejecutar sbatch
 4. Abrir el archivo output_nbodyCU.txt    //ver salida  
 
+### BONUS: IMPRESION DE LOS DATOS DE SALIDA EN LOCAL
+1. Hacer los mismos pasos de ejecución en local
+2. gnuplot    //usar gnuplot desde la termina
+3. splot "position_nbodies.txt" u 1:2:3 pt 7 lw 1   //plotear los datos de las masas
+
+
+## Nota
+1. Para hacer el BONUS es necesario entrar manteniendo el modo gráfico usando ssh junto con -X
 
 
 
