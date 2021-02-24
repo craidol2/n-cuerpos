@@ -51,13 +51,13 @@ void readData(float *datos) {
 
 
 void bodyForce(float4 *p, float4 *v, float dt, int n) {
-  for (int i =0; i < n) {
+  for (int i =0; i < n; i++) {
     float Fx = 0.0f; float Fy = 0.0f; float Fz = 0.0f;
 
     for (int j = 0; j < BLOCK_SIZE; j++) {
-        float dx = spos[j].x - p[i].x;
-        float dy = spos[j].y - p[i].y;
-        float dz = spos[j].z - p[i].z;
+        float dx = p[j].x - p[i].x;
+        float dy = p[j].y - p[i].y;
+        float dz = p[j].z - p[i].z;
         float distSqr = dx*dx + dy*dy + dz*dz + SOFTENING;
         float invDist = rsqrtf(distSqr);
         float invDist3 = invDist * invDist * invDist;
